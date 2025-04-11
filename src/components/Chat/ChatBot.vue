@@ -29,18 +29,24 @@ const curretHumanMessage = ref<ChatMessage>({ message: '', user: 'human' });
     <div>
         <div class="list-group mb-3">
             <div class="list-group-item" v-for="item in chatMessages" :key="item.message">
+                <div class="chat-single-message left"  v-if="item.user === 'bot'">
 
-                <div v-if="item.user === 'bot'">
-                    <span class="badge bg-primary">Bot</span>
-                    <span style="max-width: 50%;">
-                        {{ item.message }}
-                    </span>
+                    <div class="chat-message-content">
+                        <p class="mb-3"> {{ item.message }}</p>
+                        <p class="chat-time mb-0">
+                            <span class="badge bg-primary">Bot</span>
+                        </p>
+                    </div>
                 </div>
-                <div v-else>
-                    <span class="badge bg-success float-end">User</span>
-                    <span style="max-width: 50%;">
-                        {{ item.message }}
-                    </span>
+                <div v-else class="chat-single-message right">
+                    <div class="chat-message-content">
+                        <p class="mb-3">
+                            {{ item.message }}
+                        </p>
+                        <p class="chat-time mb-0">
+                            <span>User</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
